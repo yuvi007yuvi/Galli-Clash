@@ -1,39 +1,28 @@
-# Galli Clash
+# Galli Clash ⚔️
 
-A browser street-fighting game set in an Indian galli. Fight a friend on the same keyboard, or online from different devices using a room code.
+Street fighter of the galli. 9 fighters, 27 supers, weapon grab combos, arcade mode, CPU, same-device 2 player, training, and **online play with a friend on another device**.
 
 **Play:** https://yuvi007yuvi.github.io/Galli-Clash/
 
 ## Play online with a friend
-1. One player taps **Create Online Room** and gets a 5-character code.
-2. Share the code (or tap **Share Link** to send a link that joins directly).
-3. The friend types the code and taps **Join Room**. The fight starts as soon as you connect.
+1. Pick **🌐 ONLINE**, choose your fighter, and tap **Next: Create / Join Room**.
+2. One player taps **Create Room** and shares the 5-letter code, or taps **Share Link** to send a link that joins directly.
+3. The friend picks their fighter, types the code, and taps **Join Room**. The fight starts as soon as you connect.
 
-The room creator plays **Raju** (orange), the friend plays **Bunty** (green). Best of 3 rounds, 60 seconds each. Either player can start a rematch.
+The room creator fights on the left; the friend fights on the right. A **YOU** arrow marks your fighter. Either player can ask for a rematch.
 
 ## Controls
-| Action | Keyboard (online / P1) | P2 on same keyboard | Phone |
-|---|---|---|---|
-| Move | `A` `D` (online: arrows also work) | `←` `→` | ◀ ▶ |
-| Jump | `W` | `↑` | ▲ |
-| Block | `S` (hold) | `↓` | BLOCK |
-| Punch | `F` | `,` | 👊 |
-| Kick | `G` | `.` | 🦵 |
-| Chappal throw | `H` (3s cooldown) | `/` | CHAPPAL |
+**Keyboard:** A/D move · W jump · S roll · hold back (or L) block · J punch · K kick · U grab · O special · I super. Online, the arrow keys also move.
+**Phone:** joystick + on-screen buttons.
 
-## How online play works
-Online mode uses [PeerJS](https://peerjs.com/) (WebRTC). The room creator's browser runs the fight and streams it to the friend, who sends back button presses. There is no game server to run; the free PeerJS cloud only introduces the two devices.
+## How online works
+Online play uses [PeerJS](https://peerjs.com/) (WebRTC). The room creator's device runs the fight and streams it to the friend, whose button presses are sent back. No game server needed; the free PeerJS cloud only introduces the two devices.
 
-If two phones on mobile data can't connect, try with at least one on Wi-Fi. Some mobile networks block direct peer-to-peer links; fixing that fully needs a TURN server, which can be added to the `ICE` list at the top of `game.js`.
+- If two phones on mobile data can't connect, try with at least one on Wi-Fi. Some mobile networks block direct connections (fixing that fully needs a TURN server in `NET_ICE`).
+- Keep the game open on the room creator's screen; if that tab goes to the background the fight pauses for both.
 
 ## Run locally
-Any static server works:
 ```
 python3 -m http.server 8000
 ```
 Then open http://localhost:8000.
-
-## Files
-- `index.html`: page and menus
-- `style.css`: layout and touch buttons
-- `game.js`: game logic, drawing, sound, input and networking
