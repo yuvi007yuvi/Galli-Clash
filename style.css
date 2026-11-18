@@ -1,0 +1,77 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%; background: #120c1c; overflow: hidden; color: #fff;
+  touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  font-family: "Trebuchet MS", system-ui, sans-serif;
+}
+#wrap { position: absolute; width: 960px; height: 540px; transform-origin: 0 0; }
+canvas { display: block; width: 960px; height: 540px; }
+
+.screen {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px; text-align: center;
+  background: rgba(14, 8, 26, 0.78);
+}
+.hidden { display: none !important; }
+
+h1 {
+  font-size: 88px; font-style: italic; letter-spacing: 4px; color: #ffcc33;
+  text-shadow: 4px 4px 0 #c2185b, 8px 8px 0 #000;
+}
+h2 { font-size: 52px; font-style: italic; color: #ffcc33; text-shadow: 3px 3px 0 #c2185b, 6px 6px 0 #000; }
+.tag { font-size: 20px; opacity: 0.9; margin-top: -6px; }
+.row { display: flex; gap: 14px; align-items: center; justify-content: center; }
+.help { font-size: 15px; line-height: 1.7; opacity: 0.85; max-width: 820px; }
+kbd {
+  display: inline-block; min-width: 20px; padding: 0 5px; border-radius: 4px;
+  background: #fff2; border: 1px solid #fff5; font-family: inherit; font-size: 13px;
+}
+.status { font-size: 20px; min-height: 26px; max-width: 760px; }
+.status.err { color: #ff8a80; }
+
+button {
+  font: inherit; font-size: 21px; font-weight: bold; padding: 12px 24px;
+  border: 3px solid #000; border-radius: 10px; background: #ff9800; color: #1a1a1a;
+  box-shadow: 4px 4px 0 #000; cursor: pointer;
+}
+button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+button.alt { background: #4dd0e1; }
+button.ghost { background: #eee; }
+
+#codeInput {
+  font: inherit; font-size: 26px; font-weight: bold; width: 170px; padding: 10px;
+  text-align: center; text-transform: uppercase; letter-spacing: 6px;
+  border: 3px solid #000; border-radius: 10px; user-select: text; -webkit-user-select: text;
+}
+#codeBox { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.code {
+  font-size: 76px; font-weight: bold; letter-spacing: 14px; color: #ffcc33;
+  background: #000; padding: 4px 18px 4px 32px; border-radius: 12px; user-select: text; -webkit-user-select: text;
+}
+
+#exitBtn {
+  position: absolute; top: 76px; left: 50%; transform: translateX(-50%);
+  font-size: 13px; padding: 3px 10px; box-shadow: 2px 2px 0 #000; opacity: 0.8;
+}
+
+#touch .btn {
+  position: absolute; width: 84px; height: 84px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.16); border: 3px solid rgba(255, 255, 255, 0.5);
+  font-size: 30px; font-weight: bold;
+}
+#touch .btn.small { width: 76px; height: 76px; font-size: 12px; }
+#touch .btn.on { background: rgba(255, 204, 51, 0.6); }
+
+#toast {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85); padding: 10px 18px; border-radius: 8px; font-size: 18px;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none; white-space: nowrap;
+}
+#toast.show { opacity: 1; }
+
+#rotate {
+  position: fixed; inset: 0; z-index: 10; display: none; background: #120c1c;
+  align-items: center; justify-content: center; text-align: center; font-size: 24px; line-height: 1.6;
+}
+@media (orientation: portrait) and (pointer: coarse) { #rotate { display: flex; } }

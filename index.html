@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#120c1c">
+<title>Galli Clash</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="960" height="540"></canvas>
+
+  <!-- Main menu -->
+  <div id="menu" class="screen">
+    <h1>GALLI CLASH</h1>
+    <p class="tag">Street fight in the galli. Bring a friend.</p>
+    <div class="row">
+      <button id="btnHost">🌐 Create Online Room</button>
+      <button id="btnLocal" class="alt">🎮 2 Players, Same Device</button>
+    </div>
+    <div class="row">
+      <input id="codeInput" maxlength="5" placeholder="CODE" autocomplete="off" autocapitalize="characters" spellcheck="false">
+      <button id="btnJoin" class="alt">Join Room</button>
+    </div>
+    <p class="help">
+      <b>Online:</b> move <kbd>A</kbd><kbd>D</kbd> or arrows · jump <kbd>W</kbd> · block <kbd>S</kbd> · punch <kbd>F</kbd> · kick <kbd>G</kbd> · chappal <kbd>H</kbd><br>
+      <b>Same device:</b> P1 uses keys above · P2 arrows + <kbd>,</kbd> punch <kbd>.</kbd> kick <kbd>/</kbd> chappal<br>
+      On phones, on-screen buttons appear automatically.
+    </p>
+  </div>
+
+  <!-- Online lobby -->
+  <div id="lobby" class="screen hidden">
+    <h2 id="lobbyTitle">Online Room</h2>
+    <div id="codeBox" class="hidden">
+      <p class="help">Share this code with your friend</p>
+      <div id="roomCode" class="code">-----</div>
+      <div class="row">
+        <button id="btnCopy" class="alt">📋 Copy Code</button>
+        <button id="btnShare" class="alt">🔗 Share Link</button>
+      </div>
+    </div>
+    <p id="lobbyStatus" class="status">Connecting…</p>
+    <button id="btnCancel" class="ghost">Back</button>
+  </div>
+
+  <!-- End of match -->
+  <div id="endScreen" class="screen hidden">
+    <h2 id="endText">YOU WIN!</h2>
+    <div class="row">
+      <button id="btnRematch">🔁 Rematch</button>
+      <button id="btnEndMenu" class="ghost">Menu</button>
+    </div>
+    <p id="endNote" class="help"></p>
+  </div>
+
+  <button id="exitBtn" class="ghost hidden">✕ Quit</button>
+
+  <!-- Touch controls -->
+  <div id="touch" class="hidden">
+    <div class="btn" data-k="l" style="left:20px;top:430px">◀</div>
+    <div class="btn" data-k="r" style="left:120px;top:430px">▶</div>
+    <div class="btn" data-k="u" style="left:70px;top:338px">▲</div>
+    <div class="btn small" data-k="d" style="left:220px;top:438px">BLOCK</div>
+    <div class="btn" data-k="p" style="left:760px;top:430px">👊</div>
+    <div class="btn" data-k="k" style="left:860px;top:430px">🦵</div>
+    <div class="btn small" data-k="s" style="left:810px;top:338px">CHAPPAL</div>
+  </div>
+
+  <div id="toast"></div>
+</div>
+<div id="rotate">📱↻<br>Turn your phone sideways to play</div>
+
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
